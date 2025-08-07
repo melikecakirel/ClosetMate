@@ -37,9 +37,9 @@ function AuthForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      alert("Giriş başarılı (demo)");
+      alert("Giriş başarılı");
     } else {
-      alert("Kayıt başarılı (demo)");
+      alert("Kayıt başarılı");
     }
   };
 
@@ -112,15 +112,6 @@ function AuthForm() {
                     onChange={handleChange}
                   /> Kadın
                 </label>{" "}
-                <label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Diğer"
-                    checked={formData.gender === "Diğer"}
-                    onChange={handleChange}
-                  /> Diğer
-                </label>
               </div>
 
               <div className= "mb-12">

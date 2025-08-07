@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.welcome-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+    margin: 5;
+}
+
+.weather-text {
+    font-size: 15px;
+    font-family:'Poppins';
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.style-selection {
+    font-size: 16px;
+    font-family:'Poppins';
+}
+
+
+
+  
+  
