@@ -1,12 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.welcome-weather {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+body{
+    background-color: rgb(255, 255, 255);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
+.header-under-navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    justify-content: space-between;
+}
+
+.center-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap; 
+    
+  }
+
+
+
 
 .welcome-text {
     font-size: 30px;
@@ -22,10 +46,24 @@
 
 }
 
-.style-selection {
+
+  .cloud {
+    display: inline-block;
+    background: #cfd3c8;
+    color: #495151;
+    padding: 10px 20px;
+    border-radius: 40px;
+    position: relative;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     font-size: 16px;
-    font-family:'Poppins';
-}
+  }
+
+  
+  
+  
+  
+  
 
 
 
