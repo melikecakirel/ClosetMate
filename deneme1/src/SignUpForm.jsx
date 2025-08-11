@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AuthForm.css";
 
 const iller = [
@@ -25,6 +26,7 @@ function AuthForm() {
     city: "",
   });
   
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,9 +39,10 @@ function AuthForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      alert("Giriş başarılı");
+      navigate("/");
     } else {
-      alert("Kayıt başarılı");
+      setIsLogin(true);
+      navigate("/signup");
     }
   };
 

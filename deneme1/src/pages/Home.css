@@ -11,34 +11,41 @@ body{
 .header-under-navbar {
     display: flex;
     align-items: center;
+    gap: 20px;
     padding: 10px 20px;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 1px solid #ccc;
     position: relative;
-    justify-content: space-between;
+    margin-top: 10px;
+    justify-content: flex-start;
+    
 }
 
 .center-content {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 20px;
     font-weight: 600;
     white-space: nowrap; 
+    user-select: none;
+    margin-top: 50px;
     
   }
-
-
-
 
 .welcome-text {
     font-size: 30px;
     font-family: 'Dancing Script', cursive;
     margin: 5;
+  
 }
 
 .weather-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
     font-size: 15px;
     font-family:'Poppins';
     font-weight: bold;
@@ -58,6 +65,43 @@ body{
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     font-size: 16px;
   }
+
+  .arrow {
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    width: max-content;
+    min-width: 150px;
+  }
+  
+  .dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  
+  
+
+  
+
+  
+  
 
   
   

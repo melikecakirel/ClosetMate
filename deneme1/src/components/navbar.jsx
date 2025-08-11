@@ -11,10 +11,10 @@ const Navbar = () => {
         </div>
         <div className="nav-right">
         <Link to="/">Ana Sayfa</Link>
-        <Link to="/">Dolabım</Link>
-        <Link to="/">Favorilerim</Link>
-        <Link to="/">Profilim</Link>
-        <Link to="/SignUpForm" className="user-icon">👤</Link>
+        <Link to="/closet">Dolabım</Link>
+        <Link to="/favorites">Favorilerim</Link>
+        <Link to="/profile">Profilim</Link>
+        <Link to="/signup" className="user-icon">👤</Link>
         </div>
     </nav>
   );
