@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const tshirts = [
-  {name: "Üst1", img: "/images/ust1.jpg"},
-  {name: "Üst2", img: "/images/ust2.jpg"},
-  {name: "Üst3", img: "/images/ust3.jpg"},
-  {name: "Üst4", img: "/images/ust4.jpg"},
-  {name: "Üst5", img: "/images/ust5.jpg"},
-  {name: "Üst6", img: "/images/ust6.jpg"},
-  {name: "Üst7", img: "/images/ust7.jpg"},
+  {name: "Üst1", img: "/images/ust1.jpg", style: "Şık"},
+  {name: "Üst2", img: "/images/ust2.jpg", style: "Şık"},
+  {name: "Üst3", img: "/images/ust3.jpg", style: "Şık"},
+  {name: "Üst4", img: "/images/ust4.jpg", style: "Rahat"},
+  {name: "Üst5", img: "/images/ust5.jpg", style: "Rahat"},
+  {name: "Üst6", img: "/images/ust6.jpg", style: "Şık"},
+  {name: "Üst7", img: "/images/ust7.jpg", style: "Şık"},
 ]
 
 const pants = [
-  { name: "Alt1", img: "/images/alt1.jpg" },
-  { name: "Alt2", img: "/images/alt2.jpg" },
-  { name: "Alt3", img: "/images/alt3.jpg" },
-  { name: "Alt4", img: "/images/alt4.jpg" },
-  { name: "Alt5", img: "/images/alt5.jpg" },
+  { name: "Alt1", img: "/images/alt1.jpg", style: "Şık" },
+  { name: "Alt2", img: "/images/alt2.jpg", style: "Rahat" },
+  { name: "Alt3", img: "/images/alt3.jpg", style: "Şık" },
+  { name: "Alt4", img: "/images/alt4.jpg", style: "Şık" },
+  { name: "Alt5", img: "/images/alt5.jpg", style: "Rahat" },
 ];
 
 const belts = [
@@ -35,12 +35,16 @@ const shoes = [
 
 ];
 
+const normalize = (s) => (s ? s.toString().trim().toLocaleLowerCase('tr-TR') : '');
+
+
 
 const OutfitCard = () => {
   const [tshirtIndex, setTshirtIndex] = useState(0);
   const [pantsIndex, setPantsIndex] = useState(0);
   const [beltIndex, setBeltIndex] = useState(0);
   const [shoesIndex, setShoesIndex] = useState(0);
+
 
   const changeIndex = (setter, currentIndex, arrayLength, direction) => {
     if (direction === "next") {

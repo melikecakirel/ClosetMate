@@ -46,7 +46,7 @@ const Home = () => {
         
         <div className="weather-text">Bugünkü Hava: Güneşli</div>
         <div className="outfit-container">
-          <OutfitCard />
+        <OutfitCard /> 
         </div>
 
     </div>
