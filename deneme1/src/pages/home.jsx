@@ -10,6 +10,7 @@ const Home = () => {
   const [selectedStyle, setSelectedStyle] = useState("");
   const styles = ["Spor", "Şık", "Rahat", "Klasik"];
   const [menuOpen, setMenuOpen] = useState(false);
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };

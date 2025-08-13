@@ -85,8 +85,7 @@ const Closet = () => {
               <p style={{ fontStyle: "italic" }}>Henüz {cat} eklenmedi.</p>
             )}
 
-            {clothes
-              .filter((c) => c.category === cat)
+            {clothes.filter((c) => c.category === cat)
               .map((cloth) => (
                 <div key={cloth.id} className="cloth-card">
                   <img src={cloth.src} alt={cloth.category} width={100} />
@@ -101,13 +100,13 @@ const Closet = () => {
       ))}
 
       <h3>Seçilen Kombin</h3>
-      <div className="selected-clothes-grid" style={{ flexDirection: "column" }}>
+      <div className="full-combo-card" style={{ flexDirection: "column" }}>
         {selectedClothes.length === 0 && <p>Kombine eklenmiş kıyafet yok.</p>}
 
         {categories.map((cat) => {
           const cloth = selectedClothes.find((c) => c.category === cat);
           return (
-            <div key={cat} className="combo-cloth-card" style={{ marginBottom: 10 }}>
+            <div key={cat} className="comb-item" style={{ marginBottom: 10 }}>
               <h4>{cat}</h4>
               {cloth ? (
                 <>

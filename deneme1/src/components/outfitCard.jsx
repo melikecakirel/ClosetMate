@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const tshirts = [
   {name: "Üst1", img: "/images/ust1.jpg", style: "Şık"},
@@ -8,7 +9,7 @@ const tshirts = [
   {name: "Üst5", img: "/images/ust5.jpg", style: "Rahat"},
   {name: "Üst6", img: "/images/ust6.jpg", style: "Şık"},
   {name: "Üst7", img: "/images/ust7.jpg", style: "Şık"},
-]
+];
 
 const pants = [
   { name: "Alt1", img: "/images/alt1.jpg", style: "Şık" },
@@ -32,19 +33,15 @@ const shoes = [
   { name: "Ayakkabı4", img: "/images/ayakkabı4.jpg" },
   { name: "Ayakkabı5", img: "/images/ayakkabı5.jpg" },
   { name: "Ayakkabı6", img: "/images/ayakkabı6.jpg" },
-
 ];
 
-const normalize = (s) => (s ? s.toString().trim().toLocaleLowerCase('tr-TR') : '');
-
-
-
 const OutfitCard = () => {
+  const navigate = useNavigate();
+
   const [tshirtIndex, setTshirtIndex] = useState(0);
   const [pantsIndex, setPantsIndex] = useState(0);
   const [beltIndex, setBeltIndex] = useState(0);
   const [shoesIndex, setShoesIndex] = useState(0);
-
 
   const changeIndex = (setter, currentIndex, arrayLength, direction) => {
     if (direction === "next") {
@@ -52,6 +49,34 @@ const OutfitCard = () => {
     } else {
       setter((currentIndex - 1 + arrayLength) % arrayLength);
     }
+  };
+
+  const addToFavorites = () => {
+    const currentCombo = {
+      tshirt: tshirts[tshirtIndex],
+      pants: pants[pantsIndex],
+      belt: belts[beltIndex],
+      shoes: shoes[shoesIndex],
+    };
+
+
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+
+    const exists = favorites.some(
+      (c) =>
+        c.tshirt.img === currentCombo.tshirt.img &&
+        c.pants.img === currentCombo.pants.img &&
+        c.belt.img === currentCombo.belt.img &&
+        c.shoes.img === currentCombo.shoes.img
+    );
+
+    if (!exists) favorites.push(currentCombo);
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+
+    navigate("/favorites");
   };
 
   return (
@@ -85,6 +110,8 @@ const OutfitCard = () => {
         <img src={shoes[shoesIndex].img} alt={shoes[shoesIndex].name} />
         <button onClick={() => changeIndex(setShoesIndex, shoesIndex, shoes.length, "next")}>{">"}</button>
       </div>
+
+      <button className="favorite-btn" onClick={addToFavorites}>❤️ Favorilere Ekle</button>
     </div>
   );
 };
