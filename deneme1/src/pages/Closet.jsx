@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Closet.css";
 
 const categories = ["Üst", "Alt", "Aksesuar", "Ayakkabı"];
@@ -16,6 +16,11 @@ const Closet = () => {
   const [nextId, setNextId] = useState(5);
 
 
+  const [closetFavorites, setClosetFavorites] = useState(
+    JSON.parse(localStorage.getItem("closetFavorites")) || []
+  );
+
+
   const handleImageUpload = (e) => {
     const files = e.target.files;
     const fileArray = Array.from(files).map((file) => {
@@ -26,16 +31,16 @@ const Closet = () => {
         category: selectedCategory,
       };
     });
-
     setNextId((prev) => prev + fileArray.length);
     setClothes((prev) => [...prev, ...fileArray]);
   };
 
-  
+
   const removeCloth = (id) => {
     setClothes((prev) => prev.filter((item) => item.id !== id));
     setSelectedClothes((prev) => prev.filter((item) => item.id !== id));
   };
+
 
   const addToOutfit = (cloth) => {
     setSelectedClothes((prev) => [
@@ -44,16 +49,36 @@ const Closet = () => {
     ]);
   };
 
- 
+
   const removeFromOutfit = (id) => {
     setSelectedClothes((prev) => prev.filter((c) => c.id !== id));
+  };
+
+
+  const addToClosetFavorites = () => {
+    if (selectedClothes.length === 0) return alert("Önce kombin seç!");
+
+    const exists = closetFavorites.some((fav) =>
+      fav.every((c, i) => c.id === selectedClothes[i].id)
+    );
+    if (!exists) {
+      const newFavorites = [...closetFavorites, selectedClothes];
+      setClosetFavorites(newFavorites);
+      localStorage.setItem("closetFavorites", JSON.stringify(newFavorites));
+    }
+  };
+
+
+  const removeClosetFavorite = (index) => {
+    const newFavorites = closetFavorites.filter((_, i) => i !== index);
+    setClosetFavorites(newFavorites);
+    localStorage.setItem("closetFavorites", JSON.stringify(newFavorites));
   };
 
   return (
     <div className="closet-page">
       <h2>Dolabım</h2>
 
-      
       <label>
         Kategori Seç:{" "}
         <select
@@ -84,14 +109,12 @@ const Closet = () => {
             {clothes.filter((c) => c.category === cat).length === 0 && (
               <p style={{ fontStyle: "italic" }}>Henüz {cat} eklenmedi.</p>
             )}
-
-            {clothes.filter((c) => c.category === cat)
+            {clothes
+              .filter((c) => c.category === cat)
               .map((cloth) => (
                 <div key={cloth.id} className="cloth-card">
                   <img src={cloth.src} alt={cloth.category} width={100} />
-                  <button onClick={() => addToOutfit(cloth)}>
-                    Kombine Ekle
-                  </button>
+                  <button onClick={() => addToOutfit(cloth)}>Kombine Ekle</button>
                   <button onClick={() => removeCloth(cloth.id)}>Sil</button>
                 </div>
               ))}
@@ -110,12 +133,7 @@ const Closet = () => {
               <h4>{cat}</h4>
               {cloth ? (
                 <>
-                  <img
-                    src={cloth.src}
-                    alt={`Seçilen ${cat}`}
-                    width={70}
-                    height={70}
-                  />
+                  <img src={cloth.src} alt={`Seçilen ${cat}`} width={70} height={70} />
                   <button onClick={() => removeFromOutfit(cloth.id)}>Çıkar</button>
                 </>
               ) : (
@@ -124,6 +142,21 @@ const Closet = () => {
             </div>
           );
         })}
+        <button onClick={addToClosetFavorites}>❤️ Dolap Favorilerine Ekle</button>
+      </div>
+
+      <h3>Dolap Favorileri</h3>
+      {closetFavorites.length === 0 && <p>Henüz favori kombin yok.</p>}
+
+      <div className="favorites-grid">
+        {closetFavorites.map((combo, index) => (
+          <div key={index} className="favorite-card">
+            {combo.map((c, i) => (
+              <img key={i} src={c.src} alt={c.category} width={70} height={70} />
+            ))}
+            <button onClick={() => removeClosetFavorite(index)}>❌ Sil</button>
+          </div>
+        ))}
       </div>
     </div>
   );
