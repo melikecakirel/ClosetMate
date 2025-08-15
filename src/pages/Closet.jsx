@@ -78,22 +78,23 @@ const Closet = () => {
   return (
     <div className="closet-page">
       <h2>Dolabım</h2>
+      <div className="category-select-container">
+  <label htmlFor="category-select">Ekleyeceğiniz Ürünün Kategorisini Seçiniz:</label>
+  <select
+    id="category-select"
+    value={selectedCategory}
+    onChange={(e) => setSelectedCategory(e.target.value)}
+  >
+    {categories.map((cat) => (
+      <option key={cat} value={cat}>
+        {cat}
+      </option>
+    ))}
+  </select>
+</div>
 
-      <label>
-        Kategori Seç:{" "}
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          style={{ marginLeft: 8, marginBottom: 15 }}
-        >
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-      </label>
-
+      <div className="add-product-container">
+      <h4 className="add-product-title">Ürün Ekle:</h4>
       <input
         type="file"
         accept="image/*"
@@ -101,6 +102,7 @@ const Closet = () => {
         onChange={handleImageUpload}
         style={{ display: "block", marginBottom: 20 }}
       />
+      </div>
 
       {categories.map((cat) => (
         <div key={cat}>
@@ -122,7 +124,8 @@ const Closet = () => {
         </div>
       ))}
 
-      <h3>Seçilen Kombin</h3>
+
+      <h3 className="selected-combo-title">Seçilen Kombin</h3>
       <div className="full-combo-card" style={{ flexDirection: "column" }}>
         {selectedClothes.length === 0 && <p>Kombine eklenmiş kıyafet yok.</p>}
 
@@ -142,10 +145,10 @@ const Closet = () => {
             </div>
           );
         })}
-        <button onClick={addToClosetFavorites}>❤️ Dolap Favorilerine Ekle</button>
+        <button className="add-favorite-btn" onClick={addToClosetFavorites}>❤️ Dolap Favorilerine Ekle</button>
       </div>
 
-      <h3>Dolap Favorileri</h3>
+      <h3 className="selected-combo-title">Dolap Favorileri</h3>
       {closetFavorites.length === 0 && <p>Henüz favori kombin yok.</p>}
 
       <div className="favorites-grid">

@@ -15,21 +15,62 @@
 }
 
 .cloth-card img {
-  width: 100%;
-  height: auto;
+  width: 150px;
+  height: 180px;
   border-radius: 8px;
   object-fit: cover;
 }
 
+
+button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+
+.cloth-card button,
+.comb-item button,
+.add-favorite-btn,
+.favorite-card button {
+  background-color: #951b1b;
+  border-radius: 50px;
+}
+
+
 .cloth-card button {
   margin-top: 8px;
   padding: 5px 10px;
-  background: #ff4d4d;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 150px;
+  height: 30px;
 }
+
+.comb-item button {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.add-favorite-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  width: 250px;
+}
+
+.favorite-card button {
+  border-radius: 100px;
+}
+
+
+.cloth-card button:hover,
+.comb-item button:hover,
+.add-favorite-btn:hover,
+.favorite-card button:hover {
+  background: #f7afc7;
+}
+
 
 .full-combo-card {
   display: flex;
@@ -41,7 +82,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-top: 15px;
+  margin: 15px auto;
   width: 500px;
 }
 
@@ -59,17 +100,57 @@
   margin-bottom: 5px;
 }
 
-.comb-item button {
-  background: #ff4d4d;
-  border: none;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.favorites-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  width: 500px;
 }
 
-.comb-item button:hover {
-  background: #cc3a3a;
+
+h3, .selected-combo-title {
+  text-align: center;
+  color: #000000;
+  background-color: #f7afc7;
+  padding: 12px 0;
+  border-radius: 100px;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.category-select-container,
+.add-product-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.category-select-container label {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.category-select-container select {
+  font-size: 15px;
+  padding: 8px 8px;
+  border-radius: 100px;
+  border: 4px solid #8d281d;
+  text-align: center;
+  width: 150px;
+}
+
+.add-product-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+.add-product-container input {
+  display: block;
 }
